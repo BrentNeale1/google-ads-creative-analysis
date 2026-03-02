@@ -57,12 +57,12 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Analysis — Video
 
-- [ ] **VID-01**: Performance tier classification for video creatives
-- [ ] **VID-02**: Video creative leaderboard
-- [ ] **VID-03**: Video-specific metrics (view rate, watch time, VTR)
+- [x] **VID-01**: Performance tier classification for video creatives
+- [x] **VID-02**: Video creative leaderboard
+- [x] **VID-03**: Video-specific metrics (view rate, watch time, VTR)
 - [x] **VID-04**: Underperformer diagnosis for video creatives
-- [ ] **VID-05**: Pattern detection across top-performing videos
-- [ ] **VID-06**: Keep/Test/Pause/Investigate recommendations for video
+- [x] **VID-05**: Pattern detection across top-performing videos
+- [x] **VID-06**: Keep/Test/Pause/Investigate recommendations for video
 
 ### Visualisation
 
@@ -157,12 +157,12 @@ Which phases cover which requirements. Updated during roadmap creation.
 | DISP-04 | Phase 4 | Complete |
 | DISP-05 | Phase 4 | Complete |
 | DISP-06 | Phase 4 | Complete |
-| VID-01 | Phase 4 | Pending |
-| VID-02 | Phase 4 | Pending |
-| VID-03 | Phase 4 | Pending |
+| VID-01 | Phase 4 | Complete |
+| VID-02 | Phase 4 | Complete |
+| VID-03 | Phase 4 | Complete |
 | VID-04 | Phase 4 | Complete |
-| VID-05 | Phase 4 | Pending |
-| VID-06 | Phase 4 | Pending |
+| VID-05 | Phase 4 | Complete |
+| VID-06 | Phase 4 | Complete |
 | INTL-01 | Phase 4 | Complete |
 | INTL-02 | Phase 4 | Complete |
 | INTL-03 | Phase 4 | Pending |
