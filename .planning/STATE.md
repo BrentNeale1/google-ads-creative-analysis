@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in-progress
-last_updated: "2026-03-02T07:34:49Z"
+last_updated: "2026-03-02T07:42:20Z"
 progress:
   total_phases: 4
   completed_phases: 1
   total_plans: 7
-  completed_plans: 5
+  completed_plans: 6
 ---
 
 # Project State
@@ -23,29 +23,29 @@ See: .planning/PROJECT.md (updated 2026-03-02)
 ## Current Position
 
 Phase: 2 of 4 (Dashboard and Visualisation)
-Plan: 2 of 4 in current phase
-Status: Plan 02-02 complete, ready for Plan 02-03
-Last activity: 2026-03-02 -- Plan 02-02 executed (dashboard shell and filters)
+Plan: 3 of 4 in current phase
+Status: Plan 02-03 complete, ready for Plan 02-04
+Last activity: 2026-03-02 -- Plan 02-03 executed (metric cards, charts, tooltips)
 
-Progress: [█████░░░░░] 50%
+Progress: [██████░░░░] 60%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 5
-- Average duration: 5.4 min
-- Total execution time: 0.45 hours
+- Total plans completed: 6
+- Average duration: 5.0 min
+- Total execution time: 0.50 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01 Data Pipeline | 3/3 | 17 min | 5.7 min |
-| 02 Dashboard | 2/4 | 10 min | 5.0 min |
+| 02 Dashboard | 3/4 | 13 min | 4.3 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (5m), 01-02 (4m), 01-03 (8m), 02-01 (6m), 02-02 (4m)
-- Trend: Consistent
+- Last 5 plans: 01-02 (4m), 01-03 (8m), 02-01 (6m), 02-02 (4m), 02-03 (3m)
+- Trend: Accelerating
 
 *Updated after each plan completion*
 
@@ -78,6 +78,10 @@ Recent decisions affecting current work:
 - 02-02: Sidebar account selector preserves existing URL search params when navigating
 - 02-02: getComparisonRange uses inclusive day count for accurate period matching
 - 02-02: FilterBar campaign change clears adGroup to prevent stale selection
+- 02-03: ChartSection extracted as separate "use client" component to contain useState for metric selection
+- 02-03: Both charts share synced metric tab state for consistent comparison view
+- 02-03: ChartTooltip receives total prop from parent chart for percentage of total display
+- 02-03: CreativeBarChart uses dynamic height (40px per bar) to accommodate varying creative counts
 
 ### Pending Todos
 
@@ -91,5 +95,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-02
-Stopped at: Completed 02-02-PLAN.md -- Dashboard shell and filters complete
-Resume file: .planning/phases/02-dashboard-and-visualisation/02-03-PLAN.md
+Stopped at: Completed 02-03-PLAN.md -- Metric cards, charts, and tooltips complete
+Resume file: .planning/phases/02-dashboard-and-visualisation/02-04-PLAN.md

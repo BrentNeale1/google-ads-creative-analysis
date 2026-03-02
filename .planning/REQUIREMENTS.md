@@ -66,11 +66,11 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Visualisation
 
-- [ ] **VIS-01**: Time-series line charts showing creative performance trends
-- [ ] **VIS-02**: Horizontal bar charts for creative comparisons (sorted by value descending)
+- [x] **VIS-01**: Time-series line charts showing creative performance trends
+- [x] **VIS-02**: Horizontal bar charts for creative comparisons (sorted by value descending)
 - [x] **VIS-03**: Design system compliance (colour palette, chart rules, table rules per CLAUDE.md)
-- [ ] **VIS-04**: Data labels on bar charts when fewer than 10 items
-- [ ] **VIS-05**: Charts use subtle gridlines or none; no borders, no 3D effects
+- [x] **VIS-04**: Data labels on bar charts when fewer than 10 items
+- [x] **VIS-05**: Charts use subtle gridlines or none; no borders, no 3D effects
 
 ### Intelligence
 
@@ -132,10 +132,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | DASH-03 | Phase 2 | Complete |
 | DASH-04 | Phase 2 | Complete |
 | DASH-05 | Phase 2 | Pending |
-| VIS-01 | Phase 2 | Pending |
-| VIS-02 | Phase 2 | Pending |
-| VIS-04 | Phase 2 | Pending |
-| VIS-05 | Phase 2 | Pending |
+| VIS-01 | Phase 2 | Complete |
+| VIS-02 | Phase 2 | Complete |
+| VIS-04 | Phase 2 | Complete |
+| VIS-05 | Phase 2 | Complete |
 | RSA-01 | Phase 3 | Pending |
 | RSA-02 | Phase 3 | Pending |
 | RSA-03 | Phase 3 | Pending |
