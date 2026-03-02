@@ -52,28 +52,36 @@ export async function POST(request: NextRequest) {
   let isNewAccount = false;
   let generatedApiKey: string | undefined;
 
-  const existingAccount = await db.query.accounts.findFirst({
-    where: eq(schema.accounts.id, data.accountId),
-  });
-
-  if (!existingAccount) {
-    // Case 1: New account -- auto-register
-    isNewAccount = true;
-    generatedApiKey = generateApiKey();
-    await db.insert(schema.accounts).values({
-      id: data.accountId,
-      displayName: data.accountName,
-      apiKey: generatedApiKey,
-      primaryKpi: 'cpa',
+  try {
+    const existingAccount = await db.query.accounts.findFirst({
+      where: eq(schema.accounts.id, data.accountId),
     });
-  } else if (existingAccount.apiKey !== apiKeyHeader) {
-    // Case 3: Existing account, wrong or missing key
+
+    if (!existingAccount) {
+      // Case 1: New account -- auto-register
+      isNewAccount = true;
+      generatedApiKey = generateApiKey();
+      await db.insert(schema.accounts).values({
+        id: data.accountId,
+        displayName: data.accountName,
+        apiKey: generatedApiKey,
+        primaryKpi: 'cpa',
+      });
+    } else if (existingAccount.apiKey !== apiKeyHeader) {
+      // Case 3: Existing account, wrong or missing key
+      return NextResponse.json(
+        { error: 'Invalid API key for this account', details: [] },
+        { status: 403 },
+      );
+    }
+    // Case 2: Existing account, valid key -- continue
+  } catch (err) {
+    const errorMessage = err instanceof Error ? err.message : 'Unknown error';
     return NextResponse.json(
-      { error: 'Invalid API key for this account', details: [] },
-      { status: 403 },
+      { error: 'Database connection failed', details: [{ field: '', message: errorMessage }] },
+      { status: 500 },
     );
   }
-  // Case 2: Existing account, valid key -- continue
 
   /* ---------------------------------------------------------------- */
   /*  4. Upsert performance data                                      */
@@ -96,7 +104,7 @@ export async function POST(request: NextRequest) {
         adStrength: r.adStrength ?? null,
         impressions: r.impressions,
         clicks: r.clicks,
-        costMicros: BigInt(r.costMicros),
+        costMicros: r.costMicros,
         conversions: r.conversions,
         conversionsValue: r.conversionsValue,
       }));
@@ -134,7 +142,7 @@ export async function POST(request: NextRequest) {
         performanceLabel: r.performanceLabel ?? null,
         impressions: r.impressions,
         clicks: r.clicks,
-        costMicros: BigInt(r.costMicros),
+        costMicros: r.costMicros,
         conversions: r.conversions,
       }));
 
@@ -172,7 +180,7 @@ export async function POST(request: NextRequest) {
         assetGroupName: r.assetGroupName,
         impressions: r.impressions,
         clicks: r.clicks,
-        costMicros: BigInt(r.costMicros),
+        costMicros: r.costMicros,
         conversions: r.conversions,
         conversionsValue: r.conversionsValue,
       }));
@@ -258,7 +266,7 @@ export async function POST(request: NextRequest) {
         adType: r.adType,
         impressions: r.impressions,
         clicks: r.clicks,
-        costMicros: BigInt(r.costMicros),
+        costMicros: r.costMicros,
         conversions: r.conversions,
         conversionsValue: r.conversionsValue,
       }));
@@ -297,12 +305,12 @@ export async function POST(request: NextRequest) {
         adName: r.adName ?? null,
         impressions: r.impressions,
         clicks: r.clicks,
-        costMicros: BigInt(r.costMicros),
+        costMicros: r.costMicros,
         conversions: r.conversions,
         conversionsValue: r.conversionsValue,
         videoViews: r.videoViews,
         videoViewRate: r.videoViewRate,
-        averageCpvMicros: BigInt(r.averageCpvMicros),
+        averageCpvMicros: r.averageCpvMicros,
         videoQuartileP25Rate: r.videoQuartileP25Rate,
         videoQuartileP50Rate: r.videoQuartileP50Rate,
         videoQuartileP75Rate: r.videoQuartileP75Rate,

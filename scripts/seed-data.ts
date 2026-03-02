@@ -308,7 +308,15 @@ async function pushDay(
   const rsaAds = generateRsaAds(ACCOUNTS.indexOf(account));
   const rsaAssets = generateRsaAssets(rsaAds);
   const pmaxGroups = generatePmaxAssetGroups();
-  const pmaxAssets = generatePmaxAssets(pmaxGroups);
+  const pmaxAssetsRaw = generatePmaxAssets(pmaxGroups);
+  // Deduplicate PMax assets by composite key to avoid INSERT batch conflicts
+  const pmaxAssetsSeen = new Set<string>();
+  const pmaxAssets = pmaxAssetsRaw.filter((a) => {
+    const key = `${a.assetGroupId}|${a.fieldType}|${a.assetType}|${a.textContent || a.imageUrl || a.youtubeVideoId || ''}`;
+    if (pmaxAssetsSeen.has(key)) return false;
+    pmaxAssetsSeen.add(key);
+    return true;
+  });
   const displayAds = generateDisplayAds();
   const videoAds = generateVideoAds();
 
