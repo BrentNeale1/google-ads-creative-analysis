@@ -95,6 +95,8 @@ export const rsaAssetDaily = pgTable(
     assetResource: text('asset_resource').notNull(),
     /** HEADLINE or DESCRIPTION */
     fieldType: text('field_type').notNull(),
+    /** Actual headline or description text from asset.text_asset.text */
+    textContent: text('text_content'),
     /** BEST, GOOD, LOW, LEARNING */
     performanceLabel: text('performance_label'),
     impressions: integer('impressions').default(0).notNull(),
@@ -110,6 +112,30 @@ export const rsaAssetDaily = pgTable(
       table.assetResource,
     ),
   ],
+);
+
+/* ------------------------------------------------------------------ */
+/*  rsa_combination_daily  --  RSA headline+description combinations  */
+/* ------------------------------------------------------------------ */
+
+export const rsaCombinationDaily = pgTable(
+  'rsa_combination_daily',
+  {
+    id: serial('id').primaryKey(),
+    accountId: text('account_id')
+      .references(() => accounts.id)
+      .notNull(),
+    date: date('date').notNull(),
+    adId: text('ad_id').notNull(),
+    /** Headline texts in this combination, JSON array of strings */
+    headlines: jsonb('headlines').notNull(),
+    /** Description texts in this combination, JSON array of strings */
+    descriptions: jsonb('descriptions').notNull(),
+    /** Impressions only -- Google does not provide clicks/conversions for combinations */
+    impressions: integer('impressions').default(0).notNull(),
+  },
+  // No unique index: multiple combinations per ad per day are possible.
+  // Ingestion uses delete-before-insert for each account+date sync.
 );
 
 /* ------------------------------------------------------------------ */

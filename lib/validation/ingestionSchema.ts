@@ -53,11 +53,23 @@ export const rsaAssetRowSchema = z.object({
   adId: z.string(),
   assetResource: z.string(),
   fieldType: z.string(),
+  textContent: z.string().optional(),
   performanceLabel: z.string().optional(),
   impressions: z.number().default(0),
   clicks: z.number().default(0),
   costMicros: z.number().default(0),
   conversions: z.number().default(0),
+});
+
+/* ------------------------------------------------------------------ */
+/*  RSA combination daily row                                         */
+/* ------------------------------------------------------------------ */
+
+export const rsaCombinationRowSchema = z.object({
+  adId: z.string(),
+  headlines: z.array(z.string()),
+  descriptions: z.array(z.string()),
+  impressions: z.number().default(0),
 });
 
 /* ------------------------------------------------------------------ */
@@ -144,6 +156,7 @@ export const ingestionSchema = z.object({
   date: dateSchema,
   rsa: z.array(rsaRowSchema).optional(),
   rsaAssets: z.array(rsaAssetRowSchema).optional(),
+  rsaCombinations: z.array(rsaCombinationRowSchema).optional(),
   pmax: z.array(pmaxAssetGroupRowSchema).optional(),
   pmaxAssets: z.array(pmaxAssetRowSchema).optional(),
   display: z.array(displayRowSchema).optional(),
@@ -153,6 +166,7 @@ export const ingestionSchema = z.object({
 export type IngestionPayload = z.infer<typeof ingestionSchema>;
 export type RsaRow = z.infer<typeof rsaRowSchema>;
 export type RsaAssetRow = z.infer<typeof rsaAssetRowSchema>;
+export type RsaCombinationRow = z.infer<typeof rsaCombinationRowSchema>;
 export type PmaxAssetGroupRow = z.infer<typeof pmaxAssetGroupRowSchema>;
 export type PmaxAssetRow = z.infer<typeof pmaxAssetRowSchema>;
 export type DisplayRow = z.infer<typeof displayRowSchema>;

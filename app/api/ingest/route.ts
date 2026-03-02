@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { eq, sql } from 'drizzle-orm';
+import { and, eq, sql } from 'drizzle-orm';
 import { createHash } from 'crypto';
 import { db } from '@/lib/db';
 import * as schema from '@/lib/db/schema';
@@ -139,6 +139,7 @@ export async function POST(request: NextRequest) {
         adId: r.adId,
         assetResource: r.assetResource,
         fieldType: r.fieldType,
+        textContent: r.textContent ?? null,
         performanceLabel: r.performanceLabel ?? null,
         impressions: r.impressions,
         clicks: r.clicks,
@@ -158,6 +159,7 @@ export async function POST(request: NextRequest) {
           ],
           set: {
             fieldType: sql`excluded.field_type`,
+            textContent: sql`excluded.text_content`,
             performanceLabel: sql`excluded.performance_label`,
             impressions: sql`excluded.impressions`,
             clicks: sql`excluded.clicks`,
@@ -167,6 +169,32 @@ export async function POST(request: NextRequest) {
         });
 
       totalRecords += data.rsaAssets.length;
+    }
+
+    // --- RSA combination daily ---
+    if (data.rsaCombinations && data.rsaCombinations.length > 0) {
+      // Delete existing combination rows for this account+date (full replace on each sync)
+      await db
+        .delete(schema.rsaCombinationDaily)
+        .where(
+          and(
+            eq(schema.rsaCombinationDaily.accountId, data.accountId),
+            eq(schema.rsaCombinationDaily.date, data.date),
+          ),
+        );
+
+      const rows = data.rsaCombinations.map((r) => ({
+        accountId: data.accountId,
+        date: data.date,
+        adId: r.adId,
+        headlines: r.headlines,
+        descriptions: r.descriptions,
+        impressions: r.impressions,
+      }));
+
+      await db.insert(schema.rsaCombinationDaily).values(rows);
+
+      totalRecords += data.rsaCombinations.length;
     }
 
     // --- PMax asset group daily ---
