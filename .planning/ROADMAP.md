@@ -64,12 +64,13 @@ Plans:
   3. Underperforming creatives show a specific diagnosis (not serving / not resonating / landing page disconnect / wrong audience) with mapped recommended actions
   4. Pattern detection surfaces what top performers have in common (copy themes, headline length, CTA type, numbers/stats) with insight-led chart titles computed from the data
   5. Every creative has a Keep/Test/Pause/Investigate classification with a prioritised action list
-**Plans**: TBD
+**Plans**: 4 plans
 
 Plans:
-- [ ] 03-01: TBD
-- [ ] 03-02: TBD
-- [ ] 03-03: TBD
+- [ ] 03-01-PLAN.md — Vitest test infrastructure, schema updates (textContent on rsaAssetDaily, rsaCombinationDaily table), Zod and ingestion route updates
+- [ ] 03-02-PLAN.md — TDD core analysis engine: tier classification, underperformer diagnosis, pattern detection, recommendations, insight titles
+- [ ] 03-03-PLAN.md — Seed data updates, RSA-specific DB queries, settings page with KPI toggle, sidebar RSA link activation
+- [ ] 03-04-PLAN.md — RSA analysis page with all UI components: tier overview, leaderboard, asset performance, combinations, diagnosis, patterns, recommendations
 
 ### Phase 4: Multi-Format Analysis and Intelligence
 **Goal**: All four creative formats (RSA, PMax, Display, Video) have full analysis coverage, and cross-cutting intelligence features surface what to do next
@@ -97,5 +98,5 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4
 |-------|----------------|--------|-----------|
 | 1. Data Pipeline and Foundation | 3/3 | Complete   | 2026-03-02 |
 | 2. Dashboard and Visualisation | 4/4 | Complete   | 2026-03-02 |
-| 3. RSA Analysis | 0/3 | Not started | - |
+| 3. RSA Analysis | 0/4 | Not started | - |
 | 4. Multi-Format Analysis and Intelligence | 0/3 | Not started | - |
