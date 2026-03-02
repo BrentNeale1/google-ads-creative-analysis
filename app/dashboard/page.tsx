@@ -6,6 +6,8 @@ import {
   fetchFilterOptions,
 } from "@/lib/queries/dashboard";
 import { FilterBar } from "@/components/dashboard/FilterBar";
+import { MetricCards } from "@/components/dashboard/MetricCards";
+import { ChartSection } from "@/components/dashboard/ChartSection";
 import { BarChart3 } from "lucide-react";
 
 /** Force dynamic rendering -- data depends on URL params and DB */
@@ -77,7 +79,7 @@ export default async function DashboardPage({ searchParams }: DashboardPageProps
     ]);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 p-6">
       {/* Filter bar */}
       <FilterBar
         campaigns={filterOptions.campaigns}
@@ -90,66 +92,21 @@ export default async function DashboardPage({ searchParams }: DashboardPageProps
         {compTo}
       </div>
 
-      {/* Metric Cards placeholder */}
-      <section>
-        <h2 className="text-sm font-medium text-gray-500 uppercase tracking-wide mb-3">
-          Key Metrics
-        </h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-          <div className="bg-white rounded-xl border border-surface-gridline p-4 shadow-sm">
-            <p className="text-xs text-gray-500 mb-1">Current Period KPIs</p>
-            <pre className="text-xs text-gray-700 overflow-auto max-h-40">
-              {JSON.stringify(currentKpi, null, 2)}
-            </pre>
-          </div>
-          <div className="bg-white rounded-xl border border-surface-gridline p-4 shadow-sm">
-            <p className="text-xs text-gray-500 mb-1">Comparison Period KPIs</p>
-            <pre className="text-xs text-gray-700 overflow-auto max-h-40">
-              {JSON.stringify(comparisonKpi, null, 2)}
-            </pre>
-          </div>
-        </div>
-      </section>
+      {/* KPI Metric Cards */}
+      <MetricCards current={currentKpi} comparison={comparisonKpi} />
 
-      {/* Charts placeholder */}
-      <section>
-        <h2 className="text-sm font-medium text-gray-500 uppercase tracking-wide mb-3">
-          Charts
-        </h2>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-          <div className="bg-white rounded-xl border border-surface-gridline p-4 shadow-sm min-h-[200px]">
-            <p className="text-xs text-gray-500 mb-2">
-              Time Series ({timeSeries.length} data points)
-            </p>
-            <pre className="text-xs text-gray-700 overflow-auto max-h-60">
-              {JSON.stringify(timeSeries.slice(0, 5), null, 2)}
-              {timeSeries.length > 5 && `\n... and ${timeSeries.length - 5} more`}
-            </pre>
-          </div>
-          <div className="bg-white rounded-xl border border-surface-gridline p-4 shadow-sm min-h-[200px]">
-            <p className="text-xs text-gray-500 mb-2">
-              Creative Comparison ({creatives.length} creatives)
-            </p>
-            <pre className="text-xs text-gray-700 overflow-auto max-h-60">
-              {JSON.stringify(creatives.slice(0, 5), null, 2)}
-              {creatives.length > 5 && `\n... and ${creatives.length - 5} more`}
-            </pre>
-          </div>
-        </div>
-      </section>
+      {/* Charts Section */}
+      <ChartSection timeSeries={timeSeries} creatives={creatives} />
 
-      {/* Table placeholder */}
+      {/* Table placeholder -- built in Plan 04 */}
       <section>
         <h2 className="text-sm font-medium text-gray-500 uppercase tracking-wide mb-3">
           Creative Performance Table
         </h2>
         <div className="bg-white rounded-xl border border-surface-gridline p-4 shadow-sm">
-          <p className="text-xs text-gray-500 mb-2">
-            All creatives ({creatives.length} rows)
+          <p className="text-sm text-gray-400">
+            Table coming in next plan ({creatives.length} creatives available)
           </p>
-          <pre className="text-xs text-gray-700 overflow-auto max-h-80">
-            {JSON.stringify(creatives, null, 2)}
-          </pre>
         </div>
       </section>
     </div>
