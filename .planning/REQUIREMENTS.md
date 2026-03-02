@@ -76,7 +76,7 @@ Requirements for initial release. Each maps to roadmap phases.
 
 - [x] **INTL-01**: Gap analysis — identify untested creative angles and selling points
 - [x] **INTL-02**: Creative fatigue detection (performance declining over time)
-- [ ] **INTL-03**: Monday morning briefing view (what changed, what needs attention, what to do)
+- [x] **INTL-03**: Monday morning briefing view (what changed, what needs attention, what to do)
 
 ## v2 Requirements
 
@@ -165,7 +165,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | VID-06 | Phase 4 | Complete |
 | INTL-01 | Phase 4 | Complete |
 | INTL-02 | Phase 4 | Complete |
-| INTL-03 | Phase 4 | Pending |
+| INTL-03 | Phase 4 | Complete |
 
 **Coverage:**
 - v1 requirements: 47 total
