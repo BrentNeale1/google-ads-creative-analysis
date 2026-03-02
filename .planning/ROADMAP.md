@@ -46,12 +46,13 @@ Plans:
   3. User can select date ranges (7d, 30d, 90d presets and custom) and filter by campaign and ad group
   4. Time-series line charts show creative performance trends over selected date range
   5. Horizontal bar charts compare creatives sorted by value descending, with data labels when fewer than 10 items and no visual clutter (no borders, no 3D, subtle or no gridlines)
-**Plans**: TBD
+**Plans**: 4 plans
 
 Plans:
-- [ ] 02-01: TBD
-- [ ] 02-02: TBD
-- [ ] 02-03: TBD
+- [ ] 02-01-PLAN.md — Install deps (recharts, nuqs, date-fns), NuqsAdapter, search params, data aggregation queries, metric definitions
+- [ ] 02-02-PLAN.md — Account selector in sidebar, filter bar with date presets and cascading dropdowns, dashboard page shell
+- [ ] 02-03-PLAN.md — Metric cards with period deltas, time-series line chart, horizontal bar chart, metric tabs, tooltips
+- [ ] 02-04-PLAN.md — Sortable paginated performance table, end-to-end dashboard verification
 
 ### Phase 3: RSA Analysis
 **Goal**: Operator can analyse RSA creative performance at asset and combination level, see which patterns drive results, understand why underperformers fail, and get actionable Keep/Test/Pause/Investigate recommendations
@@ -95,6 +96,6 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Data Pipeline and Foundation | 3/3 | Complete   | 2026-03-02 |
-| 2. Dashboard and Visualisation | 0/3 | Not started | - |
+| 2. Dashboard and Visualisation | 0/4 | Not started | - |
 | 3. RSA Analysis | 0/3 | Not started | - |
 | 4. Multi-Format Analysis and Intelligence | 0/3 | Not started | - |
