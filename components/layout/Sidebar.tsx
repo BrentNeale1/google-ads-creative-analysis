@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import {
   LayoutDashboard,
   Search,
@@ -23,7 +24,7 @@ interface NavItem {
 const navItems: NavItem[] = [
   {
     name: "Dashboard",
-    href: "/",
+    href: "/dashboard",
     icon: LayoutDashboard,
     active: true,
     disabled: false,
@@ -65,8 +66,25 @@ const navItems: NavItem[] = [
   },
 ];
 
-export const Sidebar = () => {
+interface SidebarProps {
+  accounts: Array<{ id: string; displayName: string }>;
+}
+
+export const Sidebar = ({ accounts }: SidebarProps) => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const selectedAccount = searchParams.get("account") ?? "";
+
+  const handleAccountChange = (accountId: string) => {
+    if (!accountId) return;
+    // Preserve existing search params and update account
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("account", accountId);
+    router.push(`/dashboard?${params.toString()}`);
+    setMobileOpen(false);
+  };
 
   return (
     <>
@@ -110,6 +128,27 @@ export const Sidebar = () => {
 
         {/* Spacer for desktop */}
         <div className="hidden lg:block h-6" />
+
+        {/* Account selector */}
+        <div className="px-4 mb-4">
+          <label className="block text-[10px] font-semibold uppercase tracking-wider text-brand-grey mb-1.5">
+            Account
+          </label>
+          <select
+            value={selectedAccount}
+            onChange={(e) => handleAccountChange(e.target.value)}
+            className="bg-white border border-surface-gridline rounded-lg px-3 py-2 text-sm w-full text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-blue/30 focus:border-brand-blue transition-colors"
+          >
+            <option value="" disabled>
+              Select account...
+            </option>
+            {accounts.map((account) => (
+              <option key={account.id} value={account.id}>
+                {account.displayName}
+              </option>
+            ))}
+          </select>
+        </div>
 
         {/* Navigation links */}
         <nav className="flex-1 px-3 space-y-1">
