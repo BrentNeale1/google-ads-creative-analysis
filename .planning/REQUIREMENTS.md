@@ -18,8 +18,8 @@ Requirements for initial release. Each maps to roadmap phases.
 ### Dashboard
 
 - [ ] **DASH-01**: User can switch between client accounts via account selector
-- [ ] **DASH-02**: Performance overview shows key metrics (impressions, clicks, CTR, conversions, CPA/ROAS)
-- [ ] **DASH-03**: User can select date ranges (7d, 30d, 90d presets + custom range)
+- [x] **DASH-02**: Performance overview shows key metrics (impressions, clicks, CTR, conversions, CPA/ROAS)
+- [x] **DASH-03**: User can select date ranges (7d, 30d, 90d presets + custom range)
 - [ ] **DASH-04**: User can filter by campaign and ad group
 - [ ] **DASH-05**: User can sort tables by any metric column
 - [x] **DASH-06**: All numbers formatted for AU locale (AUD $1,234.56, percentages to 1dp, K/M shorthand in charts)
@@ -128,8 +128,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | DASH-07 | Phase 1 | Complete |
 | VIS-03 | Phase 1 | Complete |
 | DASH-01 | Phase 2 | Pending |
-| DASH-02 | Phase 2 | Pending |
-| DASH-03 | Phase 2 | Pending |
+| DASH-02 | Phase 2 | Complete |
+| DASH-03 | Phase 2 | Complete |
 | DASH-04 | Phase 2 | Pending |
 | DASH-05 | Phase 2 | Pending |
 | VIS-01 | Phase 2 | Pending |

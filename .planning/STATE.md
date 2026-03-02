@@ -2,13 +2,13 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: unknown
-last_updated: "2026-03-02T06:00:55.592Z"
+status: in-progress
+last_updated: "2026-03-02T07:26:45Z"
 progress:
-  total_phases: 1
+  total_phases: 4
   completed_phases: 1
-  total_plans: 3
-  completed_plans: 3
+  total_plans: 7
+  completed_plans: 4
 ---
 
 # Project State
@@ -18,32 +18,33 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-02)
 
 **Core value:** Surface what's working, what's not, and what to test next -- so every creative decision is backed by performance data rather than gut feel.
-**Current focus:** Phase 1: Data Pipeline and Foundation
+**Current focus:** Phase 2: Dashboard and Visualisation
 
 ## Current Position
 
-Phase: 1 of 4 (Data Pipeline and Foundation) -- COMPLETE
-Plan: 3 of 3 in current phase (all plans complete)
-Status: Phase 1 complete, ready for Phase 2 planning
-Last activity: 2026-03-02 -- Plan 01-03 executed (Google Ads Script, seed data, sync status)
+Phase: 2 of 4 (Dashboard and Visualisation)
+Plan: 1 of 4 in current phase
+Status: Plan 02-01 complete, ready for Plan 02-02
+Last activity: 2026-03-02 -- Plan 02-01 executed (dashboard data foundation)
 
-Progress: [███░░░░░░░] 25%
+Progress: [████░░░░░░] 40%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 3
-- Average duration: 5.7 min
-- Total execution time: 0.28 hours
+- Total plans completed: 4
+- Average duration: 5.8 min
+- Total execution time: 0.38 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01 Data Pipeline | 3/3 | 17 min | 5.7 min |
+| 02 Dashboard | 1/4 | 6 min | 6.0 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (5m), 01-02 (4m), 01-03 (8m)
+- Last 5 plans: 01-01 (5m), 01-02 (4m), 01-03 (8m), 02-01 (6m)
 - Trend: Consistent
 
 *Updated after each plan completion*
@@ -69,6 +70,10 @@ Recent decisions affecting current work:
 - 01-03: Seed script directly deletes seed accounts from DB before re-seeding to avoid 403 on re-run
 - 01-03: Home page queries DB directly in Server Component instead of HTTP round-trip to /api/accounts
 - 01-03: orderBy uses createdAt instead of nullable lastSyncedAt to avoid Drizzle empty result bug
+- 02-01: Used server-only package for dashboard queries to prevent client-side import
+- 02-01: ROAS formatted as Nx multiplier (e.g. 2.50x) rather than percentage
+- 02-01: fetchFilterOptions deduplicates campaigns across all 4 tables by campaignId
+- 02-01: PMax tables excluded from adGroup filtering since they use asset groups
 
 ### Pending Todos
 
@@ -82,5 +87,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-02
-Stopped at: Completed 01-03-PLAN.md -- Phase 1 complete
-Resume file: Phase 2 planning needed
+Stopped at: Completed 02-01-PLAN.md -- Dashboard data foundation complete
+Resume file: .planning/phases/02-dashboard-and-visualisation/02-02-PLAN.md
