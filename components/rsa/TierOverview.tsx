@@ -1,11 +1,11 @@
 "use client";
 
 import type { TieredCreative, PrimaryKpi } from "@/lib/analysis/types";
+import { formatCurrency } from "@/lib/constants/formatting";
 
 export interface TierOverviewProps {
   tieredCreatives: TieredCreative[];
   kpiType: PrimaryKpi;
-  formatKpi: (v: number) => string;
 }
 
 interface TierConfig {
@@ -47,8 +47,10 @@ const TIER_CONFIGS: TierConfig[] = [
 export function TierOverview({
   tieredCreatives,
   kpiType,
-  formatKpi,
 }: TierOverviewProps) {
+  const formatKpi = kpiType === "cpa"
+    ? formatCurrency
+    : (v: number) => `${v.toFixed(2)}x`;
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
       {TIER_CONFIGS.map((config) => {

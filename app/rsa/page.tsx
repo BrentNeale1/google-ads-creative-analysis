@@ -14,7 +14,6 @@ import { diagnoseUnderperformers } from "@/lib/analysis/underperformerDiagnosis"
 import { detectPatterns } from "@/lib/analysis/patternDetection";
 import { generateRecommendations } from "@/lib/analysis/recommendations";
 import { generateInsightTitle } from "@/lib/analysis/insightTitles";
-import { formatCurrency } from "@/lib/constants/formatting";
 import type { PrimaryKpi, CreativeInput } from "@/lib/analysis/types";
 import { FilterBar } from "@/components/dashboard/FilterBar";
 import { TierOverview } from "@/components/rsa/TierOverview";
@@ -151,12 +150,6 @@ export default async function RsaPage({ searchParams }: RsaPageProps) {
 
   const insightTitle = generateInsightTitle(patterns, overallAvgKpi, primaryKpi);
 
-  // KPI formatter for components
-  const formatKpi =
-    primaryKpi === "cpa"
-      ? formatCurrency
-      : (v: number) => `${v.toFixed(2)}x`;
-
   const activeTab = params.tab;
 
   return (
@@ -185,7 +178,6 @@ export default async function RsaPage({ searchParams }: RsaPageProps) {
           <TierOverview
             tieredCreatives={tiered}
             kpiType={primaryKpi}
-            formatKpi={formatKpi}
           />
           <CreativeLeaderboard
             tieredCreatives={tiered}
@@ -196,7 +188,6 @@ export default async function RsaPage({ searchParams }: RsaPageProps) {
             patterns={patterns}
             insightTitle={insightTitle}
             kpiType={primaryKpi}
-            formatKpi={formatKpi}
           />
         </div>
       )}

@@ -27,6 +27,7 @@ async function updatePrimaryKpi(formData: FormData) {
     .where(eq(schema.accounts.id, accountId));
 
   revalidatePath("/settings");
+  revalidatePath("/rsa");
 }
 
 /* ------------------------------------------------------------------ */

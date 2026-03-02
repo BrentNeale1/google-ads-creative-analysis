@@ -12,12 +12,12 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import type { PatternResult, PrimaryKpi, CopyTheme } from "@/lib/analysis/types";
+import { formatCurrency } from "@/lib/constants/formatting";
 
 export interface PatternChartsProps {
   patterns: PatternResult[];
   insightTitle: string;
   kpiType: PrimaryKpi;
-  formatKpi: (v: number) => string;
 }
 
 /** Human-readable labels for copy themes */
@@ -40,8 +40,10 @@ export function PatternCharts({
   patterns,
   insightTitle,
   kpiType,
-  formatKpi,
 }: PatternChartsProps) {
+  const formatKpi = kpiType === "cpa"
+    ? formatCurrency
+    : (v: number) => `${v.toFixed(2)}x`;
   // Sort patterns: for CPA, lowest (best) first; for ROAS, highest (best) first
   const sorted = useMemo(() => {
     const s = [...patterns].sort((a, b) =>
