@@ -13,7 +13,7 @@ This roadmap delivers a creative intelligence dashboard in four phases. Phase 1 
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Data Pipeline and Foundation** - Ingestion API, database schema, project scaffold, design system config (completed 2026-03-02)
-- [ ] **Phase 2: Dashboard and Visualisation** - Account selector, metrics overview, date ranges, filtering, charts
+- [x] **Phase 2: Dashboard and Visualisation** - Account selector, metrics overview, date ranges, filtering, charts (completed 2026-03-02)
 - [ ] **Phase 3: RSA Analysis** - Tier classification, asset and combination analysis, pattern detection, recommendations
 - [ ] **Phase 4: Multi-Format Analysis and Intelligence** - PMax, Display, Video analysis plus gap analysis, fatigue detection, Monday briefing
 
@@ -96,6 +96,6 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Data Pipeline and Foundation | 3/3 | Complete   | 2026-03-02 |
-| 2. Dashboard and Visualisation | 0/4 | Not started | - |
+| 2. Dashboard and Visualisation | 4/4 | Complete   | 2026-03-02 |
 | 3. RSA Analysis | 0/3 | Not started | - |
 | 4. Multi-Format Analysis and Intelligence | 0/3 | Not started | - |

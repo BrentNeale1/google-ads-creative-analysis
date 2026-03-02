@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in-progress
-last_updated: "2026-03-02T07:42:20Z"
+last_updated: "2026-03-02T08:10:00Z"
 progress:
   total_phases: 4
-  completed_phases: 1
+  completed_phases: 2
   total_plans: 7
-  completed_plans: 6
+  completed_plans: 7
 ---
 
 # Project State
@@ -18,34 +18,34 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-02)
 
 **Core value:** Surface what's working, what's not, and what to test next -- so every creative decision is backed by performance data rather than gut feel.
-**Current focus:** Phase 2: Dashboard and Visualisation
+**Current focus:** Phase 2 complete, ready for Phase 3: RSA Analysis
 
 ## Current Position
 
-Phase: 2 of 4 (Dashboard and Visualisation)
-Plan: 3 of 4 in current phase
-Status: Plan 02-03 complete, ready for Plan 02-04
-Last activity: 2026-03-02 -- Plan 02-03 executed (metric cards, charts, tooltips)
+Phase: 2 of 4 (Dashboard and Visualisation) -- COMPLETE
+Plan: 4 of 4 in current phase (all plans complete)
+Status: Phase 2 complete, ready for Phase 3 planning
+Last activity: 2026-03-02 -- Plan 02-04 executed (performance table, end-to-end verification)
 
-Progress: [██████░░░░] 60%
+Progress: [███████░░░] 70%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 6
-- Average duration: 5.0 min
-- Total execution time: 0.50 hours
+- Total plans completed: 7
+- Average duration: 5.3 min
+- Total execution time: 0.62 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01 Data Pipeline | 3/3 | 17 min | 5.7 min |
-| 02 Dashboard | 3/4 | 13 min | 4.3 min |
+| 02 Dashboard | 4/4 | 21 min | 5.3 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-02 (4m), 01-03 (8m), 02-01 (6m), 02-02 (4m), 02-03 (3m)
-- Trend: Accelerating
+- Last 5 plans: 01-03 (8m), 02-01 (6m), 02-02 (4m), 02-03 (3m), 02-04 (8m)
+- Trend: Stable
 
 *Updated after each plan completion*
 
@@ -82,6 +82,10 @@ Recent decisions affecting current work:
 - 02-03: Both charts share synced metric tab state for consistent comparison view
 - 02-03: ChartTooltip receives total prop from parent chart for percentage of total display
 - 02-03: CreativeBarChart uses dynamic height (40px per bar) to accommodate varying creative counts
+- 02-04: PerformanceTable computes derived fields (CTR, CPA, ROAS) once before sorting to avoid recomputation
+- 02-04: CPA row highlighting inverted: lowest CPA = green (top performer), highest CPA = red (worst)
+- 02-04: FilterBar useQueryStates set to shallow: false to trigger server re-fetch on filter changes
+- 02-04: NaN/null sort values pushed to end of sorted array regardless of sort direction
 
 ### Pending Todos
 
@@ -95,5 +99,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-02
-Stopped at: Completed 02-03-PLAN.md -- Metric cards, charts, and tooltips complete
-Resume file: .planning/phases/02-dashboard-and-visualisation/02-04-PLAN.md
+Stopped at: Completed 02-04-PLAN.md -- Phase 2 fully complete
+Resume file: .planning/phases/03-rsa-analysis/ (Phase 3 planning needed)

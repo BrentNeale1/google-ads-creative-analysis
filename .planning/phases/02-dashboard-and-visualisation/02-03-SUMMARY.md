@@ -83,7 +83,7 @@ Each task was committed atomically:
 1. **Task 1: Create MetricCard, MetricCards grid, and ChartTooltip components** - `f523c5b` (feat)
 2. **Task 2: Create TimeSeriesChart, CreativeBarChart, MetricTabs, and wire into dashboard page** - `bfba46e` (feat)
 
-**Plan metadata:** pending (docs: complete plan)
+**Plan metadata:** `a777f26` (docs: complete plan)
 
 ## Files Created/Modified
 - `components/dashboard/MetricCard.tsx` - Single metric card with label, formatted value, and colour-coded delta arrow
