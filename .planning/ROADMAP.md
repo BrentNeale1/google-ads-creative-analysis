@@ -101,4 +101,4 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4
 | 1. Data Pipeline and Foundation | 3/3 | Complete   | 2026-03-02 |
 | 2. Dashboard and Visualisation | 4/4 | Complete   | 2026-03-02 |
 | 3. RSA Analysis | 4/4 | Complete | 2026-03-02 |
-| 4. Multi-Format Analysis and Intelligence | 5/5 | Complete | 2026-03-02 |
+| 4. Multi-Format Analysis and Intelligence | 5/5 | Complete    | 2026-03-02 |
