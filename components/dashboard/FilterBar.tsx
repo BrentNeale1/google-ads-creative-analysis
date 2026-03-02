@@ -18,13 +18,16 @@ const PRESET_LABELS: Record<string, string> = {
 };
 
 export const FilterBar = ({ campaigns, adGroups }: FilterBarProps) => {
-  const [filters, setFilters] = useQueryStates({
-    range: parseAsStringLiteral(RANGE_OPTIONS).withDefault("30d"),
-    from: parseAsIsoDate,
-    to: parseAsIsoDate,
-    campaign: parseAsString,
-    adGroup: parseAsString,
-  });
+  const [filters, setFilters] = useQueryStates(
+    {
+      range: parseAsStringLiteral(RANGE_OPTIONS).withDefault("30d"),
+      from: parseAsIsoDate,
+      to: parseAsIsoDate,
+      campaign: parseAsString,
+      adGroup: parseAsString,
+    },
+    { shallow: false }
+  );
 
   const isCustom = filters.range === "custom";
 
