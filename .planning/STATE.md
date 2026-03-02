@@ -9,28 +9,28 @@ See: .planning/PROJECT.md (updated 2026-03-02)
 
 ## Current Position
 
-Phase: 1 of 4 (Data Pipeline and Foundation)
-Plan: 2 of 3 in current phase
-Status: Plan 01-02 complete, ready for 01-03
-Last activity: 2026-03-02 -- Plan 01-02 executed (data pipeline and ingestion API)
+Phase: 1 of 4 (Data Pipeline and Foundation) -- COMPLETE
+Plan: 3 of 3 in current phase (all plans complete)
+Status: Phase 1 complete, ready for Phase 2 planning
+Last activity: 2026-03-02 -- Plan 01-03 executed (Google Ads Script, seed data, sync status)
 
-Progress: [██░░░░░░░░] 17%
+Progress: [███░░░░░░░] 25%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 2
-- Average duration: 4.5 min
-- Total execution time: 0.15 hours
+- Total plans completed: 3
+- Average duration: 5.7 min
+- Total execution time: 0.28 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 01 Data Pipeline | 2/3 | 9 min | 4.5 min |
+| 01 Data Pipeline | 3/3 | 17 min | 5.7 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (5m), 01-02 (4m)
+- Last 5 plans: 01-01 (5m), 01-02 (4m), 01-03 (8m)
 - Trend: Consistent
 
 *Updated after each plan completion*
@@ -52,6 +52,10 @@ Recent decisions affecting current work:
 - 01-02: PMax asset content_hash computed server-side via MD5 for deduplication
 - 01-02: Auto-registration returns API key in response body for user to update their Google Ads Script
 - 01-02: Zod v4 .default(0) on all metric fields so partial payloads work correctly
+- 01-03: Google Ads Script uses var/function (ES5) for Rhino engine compatibility
+- 01-03: Seed script directly deletes seed accounts from DB before re-seeding to avoid 403 on re-run
+- 01-03: Home page queries DB directly in Server Component instead of HTTP round-trip to /api/accounts
+- 01-03: orderBy uses createdAt instead of nullable lastSyncedAt to avoid Drizzle empty result bug
 
 ### Pending Todos
 
@@ -65,5 +69,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-02
-Stopped at: Completed 01-02-PLAN.md
-Resume file: .planning/phases/01-data-pipeline-and-foundation/01-03-PLAN.md
+Stopped at: Completed 01-03-PLAN.md -- Phase 1 complete
+Resume file: Phase 2 planning needed
