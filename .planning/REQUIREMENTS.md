@@ -9,11 +9,11 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Data Ingestion
 
-- [ ] **DATA-01**: Google Ads Script pushes creative performance data daily to app API endpoint
-- [ ] **DATA-02**: App supports 3-10 Google Ads accounts with isolated data per account
-- [ ] **DATA-03**: Ingestion API validates incoming data schema and rejects malformed payloads
-- [ ] **DATA-04**: App displays data freshness indicator per account (last synced timestamp)
-- [ ] **DATA-05**: Append-only time-series storage enables date-range queries and period comparisons
+- [x] **DATA-01**: Google Ads Script pushes creative performance data daily to app API endpoint
+- [x] **DATA-02**: App supports 3-10 Google Ads accounts with isolated data per account
+- [x] **DATA-03**: Ingestion API validates incoming data schema and rejects malformed payloads
+- [x] **DATA-04**: App displays data freshness indicator per account (last synced timestamp)
+- [x] **DATA-05**: Append-only time-series storage enables date-range queries and period comparisons
 
 ### Dashboard
 
@@ -119,11 +119,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| DATA-01 | Phase 1 | Pending |
-| DATA-02 | Phase 1 | Pending |
-| DATA-03 | Phase 1 | Pending |
-| DATA-04 | Phase 1 | Pending |
-| DATA-05 | Phase 1 | Pending |
+| DATA-01 | Phase 1 | Complete |
+| DATA-02 | Phase 1 | Complete |
+| DATA-03 | Phase 1 | Complete |
+| DATA-04 | Phase 1 | Complete |
+| DATA-05 | Phase 1 | Complete |
 | DASH-06 | Phase 1 | Complete |
 | DASH-07 | Phase 1 | Complete |
 | VIS-03 | Phase 1 | Complete |

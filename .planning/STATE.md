@@ -10,28 +10,28 @@ See: .planning/PROJECT.md (updated 2026-03-02)
 ## Current Position
 
 Phase: 1 of 4 (Data Pipeline and Foundation)
-Plan: 1 of 3 in current phase
-Status: Plan 01-01 complete, ready for 01-02
-Last activity: 2026-03-02 -- Plan 01-01 executed (project scaffold)
+Plan: 2 of 3 in current phase
+Status: Plan 01-02 complete, ready for 01-03
+Last activity: 2026-03-02 -- Plan 01-02 executed (data pipeline and ingestion API)
 
-Progress: [█░░░░░░░░░] 8%
+Progress: [██░░░░░░░░] 17%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 1
-- Average duration: 5 min
-- Total execution time: 0.08 hours
+- Total plans completed: 2
+- Average duration: 4.5 min
+- Total execution time: 0.15 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 01 Data Pipeline | 1/3 | 5 min | 5 min |
+| 01 Data Pipeline | 2/3 | 9 min | 4.5 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (5m)
-- Trend: Starting
+- Last 5 plans: 01-01 (5m), 01-02 (4m)
+- Trend: Consistent
 
 *Updated after each plan completion*
 
@@ -48,6 +48,10 @@ Recent decisions affecting current work:
 - 01-01: Used Inter font via next/font/google instead of Geist local fonts for Linear-style aesthetic
 - 01-01: Sidebar uses slide-in/out on mobile rather than icon-only collapse for better UX
 - 01-01: Disabled nav items show "Soon" label with opacity-50 and cursor-not-allowed
+- 01-02: Used bigint mode for cost_micros columns to prevent integer overflow from Google Ads micro amounts
+- 01-02: PMax asset content_hash computed server-side via MD5 for deduplication
+- 01-02: Auto-registration returns API key in response body for user to update their Google Ads Script
+- 01-02: Zod v4 .default(0) on all metric fields so partial payloads work correctly
 
 ### Pending Todos
 
@@ -61,5 +65,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-02
-Stopped at: Completed 01-01-PLAN.md
-Resume file: .planning/phases/01-data-pipeline-and-foundation/01-02-PLAN.md
+Stopped at: Completed 01-02-PLAN.md
+Resume file: .planning/phases/01-data-pipeline-and-foundation/01-03-PLAN.md
