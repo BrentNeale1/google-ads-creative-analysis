@@ -10,6 +10,13 @@
  * Requires the dev server running at http://localhost:3000 (or set SEED_API_URL).
  */
 
+import { config } from 'dotenv';
+config({ path: '.env.local' });
+
+import { drizzle } from 'drizzle-orm/neon-http';
+import { eq } from 'drizzle-orm';
+import * as schema from '../lib/db/schema';
+
 const API_URL = process.env.SEED_API_URL || 'http://localhost:3000/api/ingest';
 
 // ---------------------------------------------------------------
@@ -360,10 +367,38 @@ async function pushDay(
   return result.apiKey || apiKey;
 }
 
+async function cleanupSeedAccounts(): Promise<void> {
+  if (!process.env.DATABASE_URL) {
+    console.log('No DATABASE_URL set — skipping cleanup (accounts may already be clean)');
+    return;
+  }
+
+  const seedDb = drizzle(process.env.DATABASE_URL, { schema });
+  const accountIds = ACCOUNTS.map((a) => a.id);
+
+  console.log('Cleaning up existing seed accounts...');
+
+  for (const accountId of accountIds) {
+    // Delete child tables first (foreign key order)
+    await seedDb.delete(schema.videoDaily).where(eq(schema.videoDaily.accountId, accountId));
+    await seedDb.delete(schema.displayDaily).where(eq(schema.displayDaily.accountId, accountId));
+    await seedDb.delete(schema.pmaxAssetDaily).where(eq(schema.pmaxAssetDaily.accountId, accountId));
+    await seedDb.delete(schema.pmaxAssetGroupDaily).where(eq(schema.pmaxAssetGroupDaily.accountId, accountId));
+    await seedDb.delete(schema.rsaAssetDaily).where(eq(schema.rsaAssetDaily.accountId, accountId));
+    await seedDb.delete(schema.rsaDaily).where(eq(schema.rsaDaily.accountId, accountId));
+    await seedDb.delete(schema.syncLog).where(eq(schema.syncLog.accountId, accountId));
+    await seedDb.delete(schema.accounts).where(eq(schema.accounts.id, accountId));
+  }
+
+  console.log('Cleanup complete — seed accounts removed.\n');
+}
+
 async function main(): Promise<void> {
   console.log('Seed data script starting...');
   console.log('Target API: ' + API_URL);
   console.log('');
+
+  await cleanupSeedAccounts();
 
   const now = new Date();
   const days = 30;

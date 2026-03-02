@@ -118,7 +118,7 @@ interface AccountWithSyncs {
 async function getAccounts(): Promise<AccountWithSyncs[]> {
   try {
     const allAccounts = await db.query.accounts.findMany({
-      orderBy: [desc(schema.accounts.lastSyncedAt)],
+      orderBy: [desc(schema.accounts.createdAt)],
     });
 
     const accountsWithSyncs = await Promise.all(
