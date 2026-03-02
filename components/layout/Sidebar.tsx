@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import {
   LayoutDashboard,
   Search,
@@ -13,55 +13,48 @@ import {
   X,
 } from "lucide-react";
 
-interface NavItem {
+interface NavItemDef {
   name: string;
   href: string;
   icon: React.ElementType;
-  active: boolean;
   disabled: boolean;
 }
 
-const navItems: NavItem[] = [
+const navItems: NavItemDef[] = [
   {
     name: "Dashboard",
     href: "/dashboard",
     icon: LayoutDashboard,
-    active: true,
     disabled: false,
   },
   {
     name: "RSA Analysis",
     href: "/rsa",
     icon: Search,
-    active: false,
-    disabled: true,
+    disabled: false,
   },
   {
     name: "PMax",
     href: "/pmax",
     icon: Zap,
-    active: false,
     disabled: true,
   },
   {
     name: "Display",
     href: "/display",
     icon: Monitor,
-    active: false,
     disabled: true,
   },
   {
     name: "Video",
     href: "/video",
     icon: PlayCircle,
-    active: false,
     disabled: true,
   },
   {
     name: "Settings",
     href: "/settings",
     icon: Settings,
-    active: false,
     disabled: false,
   },
 ];
@@ -74,15 +67,23 @@ export const Sidebar = ({ accounts }: SidebarProps) => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const router = useRouter();
   const searchParams = useSearchParams();
+  const pathname = usePathname();
 
   const selectedAccount = searchParams.get("account") ?? "";
+
+  /** Determine if a nav item is active based on the current pathname */
+  const isActive = (href: string): boolean => {
+    return pathname.startsWith(href);
+  };
 
   const handleAccountChange = (accountId: string) => {
     if (!accountId) return;
     // Preserve existing search params and update account
     const params = new URLSearchParams(searchParams.toString());
     params.set("account", accountId);
-    router.push(`/dashboard?${params.toString()}`);
+    // Navigate to the current page (not always /dashboard)
+    const currentBase = pathname || "/dashboard";
+    router.push(`${currentBase}?${params.toString()}`);
     setMobileOpen(false);
   };
 
@@ -154,6 +155,7 @@ export const Sidebar = ({ accounts }: SidebarProps) => {
         <nav className="flex-1 px-3 space-y-1">
           {navItems.map((item) => {
             const Icon = item.icon;
+            const active = !item.disabled && isActive(item.href);
             return (
               <a
                 key={item.name}
@@ -162,7 +164,7 @@ export const Sidebar = ({ accounts }: SidebarProps) => {
                   flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium
                   transition-colors
                   ${
-                    item.active
+                    active
                       ? "bg-brand-blue/10 text-brand-blue"
                       : item.disabled
                         ? "opacity-50 cursor-not-allowed text-brand-grey"
@@ -179,7 +181,7 @@ export const Sidebar = ({ accounts }: SidebarProps) => {
               >
                 <Icon
                   size={18}
-                  className={item.active ? "text-brand-blue" : ""}
+                  className={active ? "text-brand-blue" : ""}
                 />
                 <span>{item.name}</span>
                 {item.disabled && (
