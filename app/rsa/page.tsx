@@ -110,9 +110,12 @@ export default async function RsaPage({ searchParams }: RsaPageProps) {
   const creativeInputs: CreativeInput[] = creatives.map((c) => ({
     adId: c.adId,
     kpiValue: primaryKpi === "cpa" ? c.cpa : c.roas,
-    headlineText:
-      (c.headlines as string[])?.join(" | ") ??
-      "",
+    headlineText: Array.isArray(c.headlines)
+      ? (c.headlines as Array<string | { text?: string }>)
+          .map((h) => (typeof h === "string" ? h : h?.text ?? ""))
+          .filter(Boolean)
+          .join(" | ")
+      : "",
     // Pass through raw metrics needed by UI components
     impressions: c.impressions,
     clicks: c.clicks,
