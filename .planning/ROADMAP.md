@@ -82,12 +82,14 @@ Plans:
   3. Video creatives have tier classification, leaderboard, video-specific metrics (view rate, watch time, VTR), and recommendations
   4. Gap analysis identifies untested creative angles and selling points across the portfolio
   5. Monday morning briefing view shows what changed, what needs attention, and prioritised actions in a single screen
-**Plans**: TBD
+**Plans**: 5 plans
 
 Plans:
-- [ ] 04-01: TBD
-- [ ] 04-02: TBD
-- [ ] 04-03: TBD
+- [ ] 04-01-PLAN.md — TDD new analysis modules: gap analysis, fatigue detection, video-specific diagnosis helpers
+- [ ] 04-02-PLAN.md — PMax queries, PMax analysis page with tier classification, leaderboard, theme analysis, directional caveats
+- [ ] 04-03-PLAN.md — Display queries, Display analysis page with tier classification, leaderboard, ad type format comparison
+- [ ] 04-04-PLAN.md — Video queries, Video analysis page with tier classification, video metrics, quartile completion funnel
+- [ ] 04-05-PLAN.md — Monday briefing page, sidebar enablement for all formats, settings revalidation for all pages
 
 ## Progress
 
@@ -99,4 +101,4 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4
 | 1. Data Pipeline and Foundation | 3/3 | Complete   | 2026-03-02 |
 | 2. Dashboard and Visualisation | 4/4 | Complete   | 2026-03-02 |
 | 3. RSA Analysis | 4/4 | Complete | 2026-03-02 |
-| 4. Multi-Format Analysis and Intelligence | 0/3 | Not started | - |
+| 4. Multi-Format Analysis and Intelligence | 0/5 | Not started | - |
