@@ -119,13 +119,59 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| — | — | Pending |
+| DATA-01 | Phase 1 | Pending |
+| DATA-02 | Phase 1 | Pending |
+| DATA-03 | Phase 1 | Pending |
+| DATA-04 | Phase 1 | Pending |
+| DATA-05 | Phase 1 | Pending |
+| DASH-06 | Phase 1 | Pending |
+| DASH-07 | Phase 1 | Pending |
+| VIS-03 | Phase 1 | Pending |
+| DASH-01 | Phase 2 | Pending |
+| DASH-02 | Phase 2 | Pending |
+| DASH-03 | Phase 2 | Pending |
+| DASH-04 | Phase 2 | Pending |
+| DASH-05 | Phase 2 | Pending |
+| VIS-01 | Phase 2 | Pending |
+| VIS-02 | Phase 2 | Pending |
+| VIS-04 | Phase 2 | Pending |
+| VIS-05 | Phase 2 | Pending |
+| RSA-01 | Phase 3 | Pending |
+| RSA-02 | Phase 3 | Pending |
+| RSA-03 | Phase 3 | Pending |
+| RSA-04 | Phase 3 | Pending |
+| RSA-05 | Phase 3 | Pending |
+| RSA-06 | Phase 3 | Pending |
+| RSA-07 | Phase 3 | Pending |
+| RSA-08 | Phase 3 | Pending |
+| RSA-09 | Phase 3 | Pending |
+| PMAX-01 | Phase 4 | Pending |
+| PMAX-02 | Phase 4 | Pending |
+| PMAX-03 | Phase 4 | Pending |
+| PMAX-04 | Phase 4 | Pending |
+| PMAX-05 | Phase 4 | Pending |
+| PMAX-06 | Phase 4 | Pending |
+| DISP-01 | Phase 4 | Pending |
+| DISP-02 | Phase 4 | Pending |
+| DISP-03 | Phase 4 | Pending |
+| DISP-04 | Phase 4 | Pending |
+| DISP-05 | Phase 4 | Pending |
+| DISP-06 | Phase 4 | Pending |
+| VID-01 | Phase 4 | Pending |
+| VID-02 | Phase 4 | Pending |
+| VID-03 | Phase 4 | Pending |
+| VID-04 | Phase 4 | Pending |
+| VID-05 | Phase 4 | Pending |
+| VID-06 | Phase 4 | Pending |
+| INTL-01 | Phase 4 | Pending |
+| INTL-02 | Phase 4 | Pending |
+| INTL-03 | Phase 4 | Pending |
 
 **Coverage:**
-- v1 requirements: 42 total
-- Mapped to phases: 0
-- Unmapped: 42
+- v1 requirements: 47 total
+- Mapped to phases: 47
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-03-02*
-*Last updated: 2026-03-02 after initial definition*
+*Last updated: 2026-03-02 after roadmap creation*
