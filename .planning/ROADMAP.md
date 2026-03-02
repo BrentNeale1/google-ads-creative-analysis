@@ -29,12 +29,12 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Historical daily snapshots accumulate over time (append-only) and are queryable by date range
   4. The app runs on Vercel with Tailwind design system colours configured and responsive layout working on laptop and tablet
   5. All number formatting follows AU locale (AUD currency, percentages to 1dp, K/M shorthand ready)
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 01-01: TBD
-- [ ] 01-02: TBD
-- [ ] 01-03: TBD
+- [ ] 01-01-PLAN.md — Project scaffold, Tailwind design system, responsive app shell with sidebar, AU locale formatting
+- [ ] 01-02-PLAN.md — Database schema (Drizzle + Neon), Zod validation, ingestion API endpoint with auth and upsert
+- [ ] 01-03-PLAN.md — Google Ads Script, seed data script, dynamic home page with sync status
 
 ### Phase 2: Dashboard and Visualisation
 **Goal**: Operator can open the app, select an account, view key performance metrics, filter by date and campaign, and see creative performance in charts and sortable tables
@@ -94,7 +94,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Data Pipeline and Foundation | 0/3 | Not started | - |
+| 1. Data Pipeline and Foundation | 0/3 | Planned | - |
 | 2. Dashboard and Visualisation | 0/3 | Not started | - |
 | 3. RSA Analysis | 0/3 | Not started | - |
 | 4. Multi-Format Analysis and Intelligence | 0/3 | Not started | - |
