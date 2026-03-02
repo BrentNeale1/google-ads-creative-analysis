@@ -3,7 +3,7 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in-progress
-last_updated: "2026-03-02T09:36:27Z"
+last_updated: "2026-03-02T09:37:54Z"
 progress:
   total_phases: 4
   completed_phases: 2
@@ -42,13 +42,14 @@ Progress: [█████████░] 91%
 |-------|-------|-------|----------|
 | 01 Data Pipeline | 3/3 | 17 min | 5.7 min |
 | 02 Dashboard | 4/4 | 21 min | 5.3 min |
-| 03 RSA Analysis | 3/4 | 8 min | 2.7 min |
+| 03 RSA Analysis | 3/4 | 15 min | 5.0 min |
 
 **Recent Trend:**
-- Last 5 plans: 02-03 (3m), 02-04 (8m), 03-01 (3m), 03-02 (TBD), 03-03 (5m)
+- Last 5 plans: 02-03 (3m), 02-04 (8m), 03-01 (3m), 03-02 (7m), 03-03 (5m)
 - Trend: Stable
 
 *Updated after each plan completion*
+| Phase 03 P02 | 7min | 11 tasks | 11 files |
 
 ## Accumulated Context
 
@@ -90,6 +91,11 @@ Recent decisions affecting current work:
 - 03-01: Node environment for Vitest (not jsdom) since analysis functions are pure TypeScript
 - 03-01: No unique index on rsaCombinationDaily -- delete-before-insert pattern for combination sync
 - 03-01: textContent nullable on rsaAssetDaily for backward compatibility with existing data
+- 03-02: CreativeInput uses index signature for pipeline field passthrough; TieredCreative extends it so headlineText flows through automatically
+- 03-02: Portfolio-relative thresholds (0.2x impressions, 0.5x CTR/CVR, 0.8x CTR) for underperformer diagnosis
+- 03-02: Minimum sample size of 3 for pattern detection to prevent overfitting
+- 03-02: Recommendations engine imports classifyThemes from patternDetection for middle-tier pattern matching
+- 03-02: All analysis functions are pure -- no DB, React, or side effect imports
 - 03-03: RSA queries compute derived metrics server-side with zero-division guards
 - 03-03: Combination queries return impressions only -- no CTR/CPA per Google limitation
 - 03-03: Portfolio averages computed per-creative then averaged (weighted approach)
