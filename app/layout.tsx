@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { AppShell } from "@/components/layout/AppShell";
 import "./globals.css";
 
@@ -23,7 +24,9 @@ export default function RootLayout({
       <body
         className={`${inter.variable} font-sans antialiased bg-surface-background`}
       >
-        <AppShell>{children}</AppShell>
+        <NuqsAdapter>
+          <AppShell>{children}</AppShell>
+        </NuqsAdapter>
       </body>
     </html>
   );
