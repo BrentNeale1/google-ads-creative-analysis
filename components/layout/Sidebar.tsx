@@ -37,7 +37,7 @@ const navItems: NavItemDef[] = [
     name: "PMax",
     href: "/pmax",
     icon: Zap,
-    disabled: true,
+    disabled: false,
   },
   {
     name: "Display",

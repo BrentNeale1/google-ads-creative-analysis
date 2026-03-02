@@ -28,6 +28,7 @@ async function updatePrimaryKpi(formData: FormData) {
 
   revalidatePath("/settings");
   revalidatePath("/rsa");
+  revalidatePath("/pmax");
 }
 
 /* ------------------------------------------------------------------ */
