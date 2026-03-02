@@ -41,7 +41,7 @@ describe('classifyThemes', () => {
 
   it('returns no duplicates', () => {
     const themes = classifyThemes('Shop Now and Buy Today');
-    const unique = [...new Set(themes)];
+    const unique = Array.from(new Set(themes));
     expect(themes.length).toBe(unique.length);
   });
 });

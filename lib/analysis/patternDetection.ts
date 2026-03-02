@@ -76,11 +76,11 @@ export function detectPatterns(
   // Filter by minimum sample size and compute averages
   const results: PatternResult[] = [];
 
-  for (const [theme, data] of themeMap.entries()) {
+  for (const [theme, data] of Array.from(themeMap.entries())) {
     if (data.count < minSampleSize) continue;
 
     const avgKpi =
-      data.kpiValues.reduce((sum, v) => sum + v, 0) / data.kpiValues.length;
+      data.kpiValues.reduce((sum: number, v: number) => sum + v, 0) / data.kpiValues.length;
 
     results.push({
       theme,
