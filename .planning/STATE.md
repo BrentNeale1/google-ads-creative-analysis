@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in-progress
-last_updated: "2026-03-02T07:26:45Z"
+last_updated: "2026-03-02T07:34:49Z"
 progress:
   total_phases: 4
   completed_phases: 1
   total_plans: 7
-  completed_plans: 4
+  completed_plans: 5
 ---
 
 # Project State
@@ -23,28 +23,28 @@ See: .planning/PROJECT.md (updated 2026-03-02)
 ## Current Position
 
 Phase: 2 of 4 (Dashboard and Visualisation)
-Plan: 1 of 4 in current phase
-Status: Plan 02-01 complete, ready for Plan 02-02
-Last activity: 2026-03-02 -- Plan 02-01 executed (dashboard data foundation)
+Plan: 2 of 4 in current phase
+Status: Plan 02-02 complete, ready for Plan 02-03
+Last activity: 2026-03-02 -- Plan 02-02 executed (dashboard shell and filters)
 
-Progress: [████░░░░░░] 40%
+Progress: [█████░░░░░] 50%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 4
-- Average duration: 5.8 min
-- Total execution time: 0.38 hours
+- Total plans completed: 5
+- Average duration: 5.4 min
+- Total execution time: 0.45 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01 Data Pipeline | 3/3 | 17 min | 5.7 min |
-| 02 Dashboard | 1/4 | 6 min | 6.0 min |
+| 02 Dashboard | 2/4 | 10 min | 5.0 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (5m), 01-02 (4m), 01-03 (8m), 02-01 (6m)
+- Last 5 plans: 01-01 (5m), 01-02 (4m), 01-03 (8m), 02-01 (6m), 02-02 (4m)
 - Trend: Consistent
 
 *Updated after each plan completion*
@@ -74,6 +74,10 @@ Recent decisions affecting current work:
 - 02-01: ROAS formatted as Nx multiplier (e.g. 2.50x) rather than percentage
 - 02-01: fetchFilterOptions deduplicates campaigns across all 4 tables by campaignId
 - 02-01: PMax tables excluded from adGroup filtering since they use asset groups
+- 02-02: AppShell converted to async Server Component to query accounts server-side and pass as prop to Sidebar
+- 02-02: Sidebar account selector preserves existing URL search params when navigating
+- 02-02: getComparisonRange uses inclusive day count for accurate period matching
+- 02-02: FilterBar campaign change clears adGroup to prevent stale selection
 
 ### Pending Todos
 
@@ -87,5 +91,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-02
-Stopped at: Completed 02-01-PLAN.md -- Dashboard data foundation complete
-Resume file: .planning/phases/02-dashboard-and-visualisation/02-02-PLAN.md
+Stopped at: Completed 02-02-PLAN.md -- Dashboard shell and filters complete
+Resume file: .planning/phases/02-dashboard-and-visualisation/02-03-PLAN.md
