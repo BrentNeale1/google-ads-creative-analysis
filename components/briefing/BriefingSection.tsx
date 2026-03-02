@@ -1,5 +1,3 @@
-"use client";
-
 import type { ElementType, ReactNode } from "react";
 
 interface BriefingSectionProps {
