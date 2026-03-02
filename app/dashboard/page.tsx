@@ -8,6 +8,7 @@ import {
 import { FilterBar } from "@/components/dashboard/FilterBar";
 import { MetricCards } from "@/components/dashboard/MetricCards";
 import { ChartSection } from "@/components/dashboard/ChartSection";
+import { PerformanceTable } from "@/components/dashboard/PerformanceTable";
 import { BarChart3 } from "lucide-react";
 
 /** Force dynamic rendering -- data depends on URL params and DB */
@@ -98,16 +99,12 @@ export default async function DashboardPage({ searchParams }: DashboardPageProps
       {/* Charts Section */}
       <ChartSection timeSeries={timeSeries} creatives={creatives} />
 
-      {/* Table placeholder -- built in Plan 04 */}
+      {/* Sortable performance table */}
       <section>
-        <h2 className="text-sm font-medium text-gray-500 uppercase tracking-wide mb-3">
-          Creative Performance Table
+        <h2 className="text-lg font-semibold text-gray-900 mb-3">
+          Creative Performance
         </h2>
-        <div className="bg-white rounded-xl border border-surface-gridline p-4 shadow-sm">
-          <p className="text-sm text-gray-400">
-            Table coming in next plan ({creatives.length} creatives available)
-          </p>
-        </div>
+        <PerformanceTable data={creatives} />
       </section>
     </div>
   );
