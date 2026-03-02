@@ -45,32 +45,35 @@ export function detectFatigue(
 ): FatiguedCreative[] {
   const priorMap = new Map(priorPeriod.map((c) => [c.adId, c]));
 
-  return currentPeriod
-    .filter((c) => c.impressions >= minImpressions)
-    .map((current) => {
-      const prior = priorMap.get(current.adId);
-      if (!prior || prior.impressions < minImpressions) return null;
-      if (prior.kpiValue === 0) return null;
+  const results: FatiguedCreative[] = [];
 
-      const changePercent =
-        (current.kpiValue - prior.kpiValue) / prior.kpiValue;
+  for (const current of currentPeriod) {
+    if (current.impressions < minImpressions) continue;
 
-      // For CPA: positive change = degradation (CPA went up)
-      // For ROAS: negative change = degradation (ROAS went down)
-      const isDegraded =
-        kpiType === 'cpa'
-          ? changePercent > degradationThreshold
-          : changePercent < -degradationThreshold;
+    const prior = priorMap.get(current.adId);
+    if (!prior || prior.impressions < minImpressions) continue;
+    if (prior.kpiValue === 0) continue;
 
-      if (!isDegraded) return null;
+    const changePercent =
+      (current.kpiValue - prior.kpiValue) / prior.kpiValue;
 
-      return {
-        adId: current.adId,
-        currentKpi: current.kpiValue,
-        priorKpi: prior.kpiValue,
-        changePercent,
-        direction: 'degraded' as const,
-      };
-    })
-    .filter((c): c is FatiguedCreative => c !== null);
+    // For CPA: positive change = degradation (CPA went up)
+    // For ROAS: negative change = degradation (ROAS went down)
+    const isDegraded =
+      kpiType === 'cpa'
+        ? changePercent > degradationThreshold
+        : changePercent < -degradationThreshold;
+
+    if (!isDegraded) continue;
+
+    results.push({
+      adId: current.adId,
+      currentKpi: current.kpiValue,
+      priorKpi: prior.kpiValue,
+      changePercent,
+      direction: 'degraded',
+    });
+  }
+
+  return results;
 }
