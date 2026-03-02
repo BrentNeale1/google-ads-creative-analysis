@@ -22,8 +22,8 @@ Requirements for initial release. Each maps to roadmap phases.
 - [ ] **DASH-03**: User can select date ranges (7d, 30d, 90d presets + custom range)
 - [ ] **DASH-04**: User can filter by campaign and ad group
 - [ ] **DASH-05**: User can sort tables by any metric column
-- [ ] **DASH-06**: All numbers formatted for AU locale (AUD $1,234.56, percentages to 1dp, K/M shorthand in charts)
-- [ ] **DASH-07**: Layout is responsive and usable on laptop and tablet
+- [x] **DASH-06**: All numbers formatted for AU locale (AUD $1,234.56, percentages to 1dp, K/M shorthand in charts)
+- [x] **DASH-07**: Layout is responsive and usable on laptop and tablet
 
 ### Analysis — RSA
 
@@ -68,7 +68,7 @@ Requirements for initial release. Each maps to roadmap phases.
 
 - [ ] **VIS-01**: Time-series line charts showing creative performance trends
 - [ ] **VIS-02**: Horizontal bar charts for creative comparisons (sorted by value descending)
-- [ ] **VIS-03**: Design system compliance (colour palette, chart rules, table rules per CLAUDE.md)
+- [x] **VIS-03**: Design system compliance (colour palette, chart rules, table rules per CLAUDE.md)
 - [ ] **VIS-04**: Data labels on bar charts when fewer than 10 items
 - [ ] **VIS-05**: Charts use subtle gridlines or none; no borders, no 3D effects
 
@@ -124,9 +124,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | DATA-03 | Phase 1 | Pending |
 | DATA-04 | Phase 1 | Pending |
 | DATA-05 | Phase 1 | Pending |
-| DASH-06 | Phase 1 | Pending |
-| DASH-07 | Phase 1 | Pending |
-| VIS-03 | Phase 1 | Pending |
+| DASH-06 | Phase 1 | Complete |
+| DASH-07 | Phase 1 | Complete |
+| VIS-03 | Phase 1 | Complete |
 | DASH-01 | Phase 2 | Pending |
 | DASH-02 | Phase 2 | Pending |
 | DASH-03 | Phase 2 | Pending |
