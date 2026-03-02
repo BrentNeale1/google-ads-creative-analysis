@@ -30,8 +30,8 @@ Requirements for initial release. Each maps to roadmap phases.
 - [ ] **RSA-01**: Performance tier classification — top 20%, middle 60%, bottom 20% by primary KPI
 - [ ] **RSA-02**: Primary KPI is configurable per account (CPA or ROAS)
 - [ ] **RSA-03**: Top/bottom creative leaderboards sorted by performance
-- [ ] **RSA-04**: RSA asset-level analysis (individual headline and description performance)
-- [ ] **RSA-05**: RSA combination reporting (which headline+description pairings serve and convert)
+- [x] **RSA-04**: RSA asset-level analysis (individual headline and description performance)
+- [x] **RSA-05**: RSA combination reporting (which headline+description pairings serve and convert)
 - [ ] **RSA-06**: Underperformer diagnosis (low impressions, low CTR, low CVR, high CPA mapping)
 - [ ] **RSA-07**: Pattern detection across top performers (copy themes, headline length, CTA type, numbers/stats)
 - [ ] **RSA-08**: Keep/Test/Pause/Investigate recommendation framework per creative
@@ -139,8 +139,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | RSA-01 | Phase 3 | Pending |
 | RSA-02 | Phase 3 | Pending |
 | RSA-03 | Phase 3 | Pending |
-| RSA-04 | Phase 3 | Pending |
-| RSA-05 | Phase 3 | Pending |
+| RSA-04 | Phase 3 | Complete |
+| RSA-05 | Phase 3 | Complete |
 | RSA-06 | Phase 3 | Pending |
 | RSA-07 | Phase 3 | Pending |
 | RSA-08 | Phase 3 | Pending |
