@@ -32,9 +32,9 @@ Progress: [████████░░] 81% (13/16 plans complete)
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 12
+- Total plans completed: 13
 - Average duration: 5.2 min
-- Total execution time: 0.88 hours
+- Total execution time: 0.96 hours
 
 **By Phase:**
 
@@ -43,15 +43,17 @@ Progress: [████████░░] 81% (13/16 plans complete)
 | 01 Data Pipeline | 3/3 | 17 min | 5.7 min |
 | 02 Dashboard | 4/4 | 21 min | 5.3 min |
 | 03 RSA Analysis | 4/4 | 23 min | 5.8 min |
-| 04 Multi-Format | 1/5 | 4 min | 4.0 min |
+| 04 Multi-Format | 3/5 | 14 min | 4.7 min |
 
 **Recent Trend:**
-- Last 5 plans: 03-01 (3m), 03-02 (7m), 03-03 (5m), 03-04 (8m), 04-01 (4m)
+- Last 5 plans: 03-03 (5m), 03-04 (8m), 04-01 (4m), 04-02 (5m), 04-03 (5m)
 - Trend: Stable
 
 *Updated after each plan completion*
 | Phase 03 P04 | 8min | 4 tasks | 11 files |
 | Phase 04 P01 | 4min | 3 tasks | 6 files |
+| Phase 04 P03 | 5min | 2 tasks | 6 files |
+| Phase 04 P02 | 5min | 2 tasks | 8 files |
 
 ## Accumulated Context
 
@@ -111,6 +113,16 @@ Recent decisions affecting current work:
 - 04-01: Gap analysis uses 7-theme taxonomy from existing CopyTheme type, no new themes added
 - 04-01: Fatigue detection imports PrimaryKpi from types.ts for direction-aware comparison
 - 04-01: Video diagnosis is standalone (not extending diagnoseUnderperformers) to keep video-specific thresholds separate
+- 04-02: Reused TierOverview, PatternCharts, UnderperformerPanel, RecommendationList from RSA -- components accept generic TieredCreative props
+- 04-02: PMax leaderboard shows asset group name as primary identifier, not headline text
+- 04-02: Top 5 / Bottom 5 slice on PMax leaderboard tables for conciseness
+- 04-02: PortfolioAvg type duplicated in pmax.ts for module independence from rsa.ts
+- 04-02: Settings revalidatePath extended to include /pmax for KPI change propagation
+- 04-03: Display creatives mapped to human-readable ad type labels server-side in query module
+- 04-03: headlineText set to undefined for Display ads; pattern detection gracefully returns empty results
+- 04-03: FormatComparison insight title computed dynamically from data
+- 04-03: Ad type badge colours follow design system: Responsive Display = blue, Image Ad = grey, Discovery = amber
+- 04-03: Reused TierOverview, UnderperformerPanel, RecommendationList from RSA -- no Display-specific copies needed
 
 ### Pending Todos
 
@@ -124,5 +136,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-02
-Stopped at: Completed 04-01-PLAN.md -- TDD analysis modules (gap analysis, fatigue detection, video diagnosis)
-Resume file: .planning/phases/04-multi-format-analysis-and-intelligence/04-02-PLAN.md
+Stopped at: Completed 04-03-PLAN.md -- Display analysis page with format comparison
+Resume file: .planning/phases/04-multi-format-analysis-and-intelligence/04-04-PLAN.md

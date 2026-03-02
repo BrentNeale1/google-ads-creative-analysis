@@ -39,21 +39,21 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Analysis — PMax
 
-- [ ] **PMAX-01**: Performance tier classification for PMax asset groups
-- [ ] **PMAX-02**: Asset group performance leaderboard
-- [ ] **PMAX-03**: Asset group theme analysis (creative theme vs performance)
-- [ ] **PMAX-04**: Underperformer diagnosis for asset groups
-- [ ] **PMAX-05**: Pattern detection across top-performing asset groups
-- [ ] **PMAX-06**: Keep/Test/Pause/Investigate recommendations for asset groups
+- [x] **PMAX-01**: Performance tier classification for PMax asset groups
+- [x] **PMAX-02**: Asset group performance leaderboard
+- [x] **PMAX-03**: Asset group theme analysis (creative theme vs performance)
+- [x] **PMAX-04**: Underperformer diagnosis for asset groups
+- [x] **PMAX-05**: Pattern detection across top-performing asset groups
+- [x] **PMAX-06**: Keep/Test/Pause/Investigate recommendations for asset groups
 
 ### Analysis — Display/Demand Gen
 
-- [ ] **DISP-01**: Performance tier classification for display/demand gen creatives
-- [ ] **DISP-02**: Creative leaderboard for display ads
-- [ ] **DISP-03**: Format performance comparison (square vs landscape vs portrait)
-- [ ] **DISP-04**: Underperformer diagnosis for display creatives
-- [ ] **DISP-05**: Pattern detection across top-performing display creatives
-- [ ] **DISP-06**: Keep/Test/Pause/Investigate recommendations for display
+- [x] **DISP-01**: Performance tier classification for display/demand gen creatives
+- [x] **DISP-02**: Creative leaderboard for display ads
+- [x] **DISP-03**: Format performance comparison (square vs landscape vs portrait)
+- [x] **DISP-04**: Underperformer diagnosis for display creatives
+- [x] **DISP-05**: Pattern detection across top-performing display creatives
+- [x] **DISP-06**: Keep/Test/Pause/Investigate recommendations for display
 
 ### Analysis — Video
 
@@ -145,18 +145,18 @@ Which phases cover which requirements. Updated during roadmap creation.
 | RSA-07 | Phase 3 | Complete |
 | RSA-08 | Phase 3 | Complete |
 | RSA-09 | Phase 3 | Complete |
-| PMAX-01 | Phase 4 | Pending |
-| PMAX-02 | Phase 4 | Pending |
-| PMAX-03 | Phase 4 | Pending |
-| PMAX-04 | Phase 4 | Pending |
-| PMAX-05 | Phase 4 | Pending |
-| PMAX-06 | Phase 4 | Pending |
-| DISP-01 | Phase 4 | Pending |
-| DISP-02 | Phase 4 | Pending |
-| DISP-03 | Phase 4 | Pending |
-| DISP-04 | Phase 4 | Pending |
-| DISP-05 | Phase 4 | Pending |
-| DISP-06 | Phase 4 | Pending |
+| PMAX-01 | Phase 4 | Complete |
+| PMAX-02 | Phase 4 | Complete |
+| PMAX-03 | Phase 4 | Complete |
+| PMAX-04 | Phase 4 | Complete |
+| PMAX-05 | Phase 4 | Complete |
+| PMAX-06 | Phase 4 | Complete |
+| DISP-01 | Phase 4 | Complete |
+| DISP-02 | Phase 4 | Complete |
+| DISP-03 | Phase 4 | Complete |
+| DISP-04 | Phase 4 | Complete |
+| DISP-05 | Phase 4 | Complete |
+| DISP-06 | Phase 4 | Complete |
 | VID-01 | Phase 4 | Pending |
 | VID-02 | Phase 4 | Pending |
 | VID-03 | Phase 4 | Pending |
