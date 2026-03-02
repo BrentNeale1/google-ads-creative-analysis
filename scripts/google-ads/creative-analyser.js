@@ -43,6 +43,7 @@ function main() {
     date: date,
     rsa: [],
     rsaAssets: [],
+    rsaCombinations: [],
     pmax: [],
     pmaxAssets: [],
     display: [],
@@ -55,6 +56,9 @@ function main() {
 
   payload.rsaAssets = queryRsaAssetPerformance(date);
   Logger.log('RSA assets found: ' + payload.rsaAssets.length);
+
+  payload.rsaCombinations = queryRsaCombinationPerformance(date);
+  Logger.log('RSA combinations found: ' + payload.rsaCombinations.length);
 
   payload.pmax = queryPmaxPerformance(date);
   Logger.log('PMax asset groups found: ' + payload.pmax.length);
@@ -69,7 +73,7 @@ function main() {
   Logger.log('Video ads found: ' + payload.video.length);
 
   var totalRecords = payload.rsa.length + payload.rsaAssets.length +
-    payload.pmax.length + payload.pmaxAssets.length +
+    payload.rsaCombinations.length + payload.pmax.length + payload.pmaxAssets.length +
     payload.display.length + payload.video.length;
 
   if (totalRecords === 0) {
@@ -235,6 +239,7 @@ function queryRsaAssetPerformance(date) {
       'ad_group_ad_asset_view.asset, ' +
       'ad_group_ad_asset_view.field_type, ' +
       'ad_group_ad_asset_view.performance_label, ' +
+      'asset.text_asset.text, ' +
       'metrics.impressions, ' +
       'metrics.clicks, ' +
       'metrics.cost_micros, ' +
@@ -262,11 +267,78 @@ function queryRsaAssetPerformance(date) {
       adId: adId,
       assetResource: row.adGroupAdAssetView.asset || '',
       fieldType: row.adGroupAdAssetView.fieldType || '',
+      textContent: (row.asset && row.asset.textAsset && row.asset.textAsset.text) || null,
       performanceLabel: row.adGroupAdAssetView.performanceLabel || null,
       impressions: row.metrics.impressions || 0,
       clicks: row.metrics.clicks || 0,
       costMicros: row.metrics.costMicros || 0,
       conversions: row.metrics.conversions || 0,
+    });
+  }
+
+  return results;
+}
+
+// ---------------------------------------------------------------
+//  RSA Combination Performance (headline+description pairings)
+// ---------------------------------------------------------------
+
+function queryRsaCombinationPerformance(date) {
+  var query =
+    'SELECT ' +
+      'ad_group_ad.ad.id, ' +
+      'ad_group_ad_asset_combination_view.served_assets.headline, ' +
+      'ad_group_ad_asset_combination_view.served_assets.description, ' +
+      'metrics.impressions ' +
+    'FROM ad_group_ad_asset_combination_view ' +
+    'WHERE segments.date = "' + date + '" ' +
+      'AND campaign.advertising_channel_type = "SEARCH"';
+
+  var rows = collectSearchResults(query);
+  var results = [];
+
+  for (var i = 0; i < rows.length; i++) {
+    var row = rows[i];
+
+    // Extract headline texts from served_assets repeated field
+    var headlines = [];
+    var headlineAssets = row.adGroupAdAssetCombinationView &&
+      row.adGroupAdAssetCombinationView.servedAssets &&
+      row.adGroupAdAssetCombinationView.servedAssets.headline;
+    if (headlineAssets) {
+      var hLen = headlineAssets.length || 0;
+      for (var h = 0; h < hLen; h++) {
+        var hItem = headlineAssets[h];
+        if (typeof hItem === 'string') {
+          headlines.push(hItem);
+        } else if (hItem && hItem.text) {
+          headlines.push(hItem.text);
+        }
+      }
+    }
+
+    // Extract description texts from served_assets repeated field
+    var descriptions = [];
+    var descAssets = row.adGroupAdAssetCombinationView &&
+      row.adGroupAdAssetCombinationView.servedAssets &&
+      row.adGroupAdAssetCombinationView.servedAssets.description;
+    if (descAssets) {
+      var dLen = descAssets.length || 0;
+      for (var d = 0; d < dLen; d++) {
+        var dItem = descAssets[d];
+        if (typeof dItem === 'string') {
+          descriptions.push(dItem);
+        } else if (dItem && dItem.text) {
+          descriptions.push(dItem.text);
+        }
+      }
+    }
+
+    results.push({
+      adId: String(row.adGroupAd.ad.id),
+      headlines: headlines,
+      descriptions: descriptions,
+      impressions: row.metrics.impressions || 0,
     });
   }
 

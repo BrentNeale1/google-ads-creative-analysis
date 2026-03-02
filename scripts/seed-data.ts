@@ -151,11 +151,17 @@ function generateRsaAssets(rsaAds: Array<Record<string, unknown>>): Array<Record
       const clicks = Math.round(impressions * randomFloat(0.02, 0.08));
       const costMicros = Math.round(clicks * randomFloat(0.5, 3.0) * 1_000_000);
       const conversions = parseFloat((clicks * randomFloat(0.02, 0.10)).toFixed(1));
+      const fieldType = i < assetCount / 2 ? 'HEADLINE' : 'DESCRIPTION';
+
+      // Map asset index to a consistent text from the relevant pool
+      const textPool = fieldType === 'HEADLINE' ? RSA_HEADLINES : RSA_DESCRIPTIONS;
+      const textContent = textPool[(parseInt(adId) * 10 + i) % textPool.length];
 
       assets.push({
         adId,
         assetResource: 'customers/1234567890/assets/' + (5000 + parseInt(adId) * 10 + i),
-        fieldType: i < assetCount / 2 ? 'HEADLINE' : 'DESCRIPTION',
+        fieldType,
+        textContent,
         performanceLabel: randomPick(PERFORMANCE_LABELS),
         impressions,
         clicks,
@@ -166,6 +172,29 @@ function generateRsaAssets(rsaAds: Array<Record<string, unknown>>): Array<Record
   }
 
   return assets;
+}
+
+function generateRsaCombinations(rsaAds: Array<Record<string, unknown>>): Array<Record<string, unknown>> {
+  const combinations = [];
+
+  for (const ad of rsaAds) {
+    const adId = ad.adId as string;
+    const adHeadlines = (ad.headlines as Array<{ text: string }>).map((h) => h.text);
+    const adDescriptions = (ad.descriptions as Array<{ text: string }>).map((d) => d.text);
+
+    // Generate 2-3 combinations per RSA ad
+    const comboCount = randomInt(2, 3);
+    for (let i = 0; i < comboCount; i++) {
+      combinations.push({
+        adId,
+        headlines: randomSubset(adHeadlines, 2, 3),
+        descriptions: randomSubset(adDescriptions, 1, 2),
+        impressions: randomInt(50, 500),
+      });
+    }
+  }
+
+  return combinations;
 }
 
 function generatePmaxAssetGroups(): Array<Record<string, unknown>> {
@@ -314,6 +343,7 @@ async function pushDay(
 ): Promise<string> {
   const rsaAds = generateRsaAds(ACCOUNTS.indexOf(account));
   const rsaAssets = generateRsaAssets(rsaAds);
+  const rsaCombinations = generateRsaCombinations(rsaAds);
   const pmaxGroups = generatePmaxAssetGroups();
   const pmaxAssetsRaw = generatePmaxAssets(pmaxGroups);
   // Deduplicate PMax assets by composite key to avoid INSERT batch conflicts
@@ -333,6 +363,7 @@ async function pushDay(
     date,
     rsa: rsaAds,
     rsaAssets: rsaAssets,
+    rsaCombinations: rsaCombinations,
     pmax: pmaxGroups,
     pmaxAssets: pmaxAssets,
     display: displayAds,
@@ -384,6 +415,7 @@ async function cleanupSeedAccounts(): Promise<void> {
     await seedDb.delete(schema.displayDaily).where(eq(schema.displayDaily.accountId, accountId));
     await seedDb.delete(schema.pmaxAssetDaily).where(eq(schema.pmaxAssetDaily.accountId, accountId));
     await seedDb.delete(schema.pmaxAssetGroupDaily).where(eq(schema.pmaxAssetGroupDaily.accountId, accountId));
+    await seedDb.delete(schema.rsaCombinationDaily).where(eq(schema.rsaCombinationDaily.accountId, accountId));
     await seedDb.delete(schema.rsaAssetDaily).where(eq(schema.rsaAssetDaily.accountId, accountId));
     await seedDb.delete(schema.rsaDaily).where(eq(schema.rsaDaily.accountId, accountId));
     await seedDb.delete(schema.syncLog).where(eq(schema.syncLog.accountId, accountId));
